@@ -23,7 +23,7 @@ class colour:
     aqua = (0, 255, 255)
 
 class spritePos:
-    detectorPos = [display_width/2-128/2, display_height/2-128/2]
+    detectorPos = [display_width/2-128/2+150, display_height/2-128/2+150]
     playerPos = [display_width/2-64, display_height/2-64]
 
 mainWindow = pygame.display.set_mode((display_width, display_height))
@@ -33,9 +33,13 @@ clock = pygame.time.Clock()
 crashed = False
 
 lieDetector = pygame.image.load("Images/lieDetectorBase.png", "Detector")
+player = pygame.image.load("Images/none.png", "Player")
 
 def loadDetector(x, y):
     mainWindow.blit(lieDetector, (x, y))
+
+def loadPlayer(x, y):
+    mainWindow.blit(player, (x, y))
 
 while not crashed:
 
@@ -45,6 +49,7 @@ while not crashed:
             
     mainWindow.fill(colour.gray)
     loadDetector(spritePos.detectorPos[0], spritePos.detectorPos[1])
+    loadPlayer(spritePos.playerPos[0], spritePos.playerPos[1])
 
     pygame.display.update()
     clock.tick(60)
